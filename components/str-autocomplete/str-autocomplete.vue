@@ -71,11 +71,11 @@ export default {
             this.showList = tempArray;
         },
         filterString(stringExp, b) {
-            let tempByteArray = b.split('');
+            const tempByteArray = b.split('');
             let itemShow = [];
-            let sArray = stringExp.split('');
-            let fontStart = '<span style=color:' + this.highlightColor + '>';
-            let fontEnd = '</span>';
+            const sArray = stringExp.split('');
+            const fontStart = '<span style=color:' + this.highlightColor + '>';
+            const fontEnd = '</span>';
             let sameCharNumber = 0;
             for (let j = 0; j < tempByteArray.length; j++) {
                 if (tempByteArray[j] === sArray[sameCharNumber]) {
