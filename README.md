@@ -2,6 +2,8 @@
 
 # 使用说明
 
+这是一个 uniapp 组件
+
 标签（空格分隔）： autocomplete
 在标签里引入
 
