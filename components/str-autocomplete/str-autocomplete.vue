@@ -13,6 +13,9 @@ export default {
         stringList: {
             type: Array
         },
+		importvalue: {
+			type: String
+		},
         highlightColor: {
             type: String,
             default: 'lightcoral'
@@ -25,6 +28,11 @@ export default {
             needShow: false
         };
     },
+	watch: {
+		importvalue(newValue, oldValue) {
+			this.value = newValue
+		}
+	},
     model: {
         prop: 'value',
         event: 'change'
@@ -37,10 +45,12 @@ export default {
     created() {
         this.stringList.sort();
         this.showList = this.stringList;
+		this.value = this.importvalue;
     },
     methods: {
         onInput(event) {
             this.filterList(event.target.value);
+			this.$set(this, 'value', event.target.value);
             this.$emit('change', event.target.value);
             if (event.target.value.length > 0) {
                 this.needShow = true;
@@ -109,7 +119,8 @@ export default {
             }
         },
         selectThisItem(item) {
-            this.value = item.orginalString;
+			this.$set(this, 'value', this.value);
+			this.$set(this, 'value', item.orginalString);
             this.needShow = false;
             this.$emit('change', item.orginalString);
 			this.$emit('select', item.orginalString);

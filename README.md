@@ -8,12 +8,7 @@
 在标签里引入
 
 ```html
-<str-autocomplete
-  :stringList="stringList"
-  @select="selectOne"
-  highlightColor="#FF0000"
-  v-model="title"
-></str-autocomplete>
+<str-autocomplete :stringList="stringList" :importvalue="title" @select="selectOne" highlightColor="#FF0000" v-model="title"></str-autocomplete>
 ```
 
 ---
@@ -42,13 +37,30 @@ export default {
   onLoad() {},
   methods: {
     selectOne(opt) {
+      this.title = opt
       console.log(opt)
+    },
+    changeTitle(text) {
+      this.title = text
     }
   }
 }
 ```
 
 # 更新内容
+
+# 2019.7.11
+
+  1. 修改了选择同样值value不会更新的问题
+  2. 添加了属性importvalue，使importvalue与v-model相同的值可以在父组件修改value值
+  3. app测试中，model值不能随选择修改，需要在选择事件select的回调函数中修改model值，例如
+      ```
+      selectOne(opt) {
+				this.title = opt
+        console.log(opt)
+      },
+      ```
+  4. 修改插件中的部分let为const
 
 # 2019.6.5
 
