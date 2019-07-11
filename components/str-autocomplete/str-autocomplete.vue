@@ -119,7 +119,6 @@ export default {
             }
         },
         selectThisItem(item) {
-			this.$set(this, 'value', this.value);
 			this.$set(this, 'value', item.orginalString);
             this.needShow = false;
             this.$emit('change', item.orginalString);
