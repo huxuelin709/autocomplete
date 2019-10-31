@@ -16,6 +16,10 @@ export default {
 		importvalue: {
 			type: String
 		},
+		lowerAndUp: {
+			type: String,
+			default: "true"
+		},
         highlightColor: {
             type: String,
             default: 'lightcoral'
@@ -88,14 +92,33 @@ export default {
             const fontEnd = '</span>';
             let sameCharNumber = 0;
             for (let j = 0; j < tempByteArray.length; j++) {
-                if (tempByteArray[j] === sArray[sameCharNumber]) {
+				let tempChar = tempByteArray[j];
+				let sChar = sArray[sameCharNumber];
+				if (this.lowerAndUp !== 'no') {
+					tempChar = tempChar.toLowerCase();
+					if (sChar) {
+						sChar = sChar.toLowerCase();
+					}
+				}
+				
+				
+                if (tempChar === sChar) {
                     let sameNumberNow = sameCharNumber;
                     itemShow.push(fontStart);
                     for (let k = 0; k < sArray.length - sameNumberNow; k++) {
-                        if (tempByteArray[j + k] === sArray[k + sameNumberNow]) {
+						let tempCharStr = tempByteArray[j + k];
+						let sCharStr = sArray[k + sameNumberNow];
+						if (this.lowerAndUp !== 'no') {
+							tempCharStr = tempCharStr.toLowerCase();
+							if (sCharStr) {
+								sCharStr = sCharStr.toLowerCase();
+							}
+						}
+						
+                        if (tempCharStr === sCharStr) {
                             itemShow.push(tempByteArray[j + k]);
                             sameCharNumber++;
-                        } else if (tempByteArray[j + k] !== sArray[k + sameNumberNow]) {
+                        } else if (tempCharStr !== sCharStr) {
                             itemShow.push(fontEnd);
                             itemShow.push(tempByteArray[j + k]);
                             j += k;
