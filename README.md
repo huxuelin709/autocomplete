@@ -48,6 +48,11 @@ export default {
 ```
 
 # 更新内容
+# 2019.10.31
+默认添加了忽略大小写匹配，如果严格匹配不忽略大小写，需要在引用时添加lowerAndUp="no"，例如：
+```
+<str-autocomplete :stringList="stringList" :importvalue="title" lowerAndUp="no" @select="selectOne" highlightColor="#FF0000" v-model="title"></str-autocomplete>
+```
 
 # 2019.7.11
 
