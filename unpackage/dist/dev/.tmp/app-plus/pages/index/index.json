@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "uni-app",
-  "usingComponents": {
-    "str-autocomplete": "/components/str-autocomplete/str-autocomplete"
-  }
-}

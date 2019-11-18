@@ -1,6 +1,6 @@
 <template>
     <view>
-        <input class="uni-input" placeholder="请输入内容" :value="value" @input="onInput" />
+        <input class="uni-input" placeholder="请输入内容" :value="value" @input="onInput" @blur="hideList"/>
         <view class="str-auto-complete-container" v-if="isShow">
             <view v-for="(item, index) in showList" :key="index" class="str-auto-complete-item" @tap="selectThisItem(item)" v-html="item.showString"></view>
         </view>
@@ -62,6 +62,9 @@ export default {
                 this.needShow = false;
             }
         },
+		hideList() {
+			this.needShow = false;
+		},
         filterList(stringExp) {
             let tempArray = [];
             for (let i = 0; i < this.stringList.length; i++) {
