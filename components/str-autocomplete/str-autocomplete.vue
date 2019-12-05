@@ -63,7 +63,10 @@ export default {
             }
         },
 		hideList() {
-			this.needShow = false;
+			setTimeout(() => {
+				this.needShow = false;
+			}, 300);
+			
 		},
         filterList(stringExp) {
             let tempArray = [];
