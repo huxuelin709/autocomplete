@@ -3,7 +3,8 @@
 		<image class="logo" src="/static/logo.png"></image>
 		<view>
 			<text class="title">{{title}}</text>
-            <str-autocomplete :stringList="stringList" :importvalue="title" @select="selectOne" highlightColor="#FF0000" v-model="title"></str-autocomplete>
+            <str-autocomplete :stringList="stringList" :importvalue="title" @select="selectOne" @change="textChange"
+			 highlightColor="#FF0000" v-model="title"></str-autocomplete>
 			<view class="button-area">
 				<button class="primary" @click="changeTitle('test')">测试</button>
 				<button class="primary" @click="changeTitle('hi')">还原</button>
@@ -34,6 +35,9 @@
 				this.title = opt
                 console.log(opt)
             },
+			textChange(opt) {
+				console.log("textchange:" + opt)
+			},
 			changeTitle(text) {
 				this.title = text
 			}

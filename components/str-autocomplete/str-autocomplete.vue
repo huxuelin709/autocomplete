@@ -112,7 +112,7 @@ export default {
                     let sameNumberNow = sameCharNumber;
                     itemShow.push(fontStart);
                     for (let k = 0; k < sArray.length - sameNumberNow; k++) {
-						let tempCharStr = tempByteArray[j + k];
+						let tempCharStr = tempByteArray[j + k] || '';
 						let sCharStr = sArray[k + sameNumberNow];
 						if (this.lowerAndUp !== 'no') {
 							tempCharStr = tempCharStr.toLowerCase();
