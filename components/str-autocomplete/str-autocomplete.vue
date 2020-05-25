@@ -35,7 +35,13 @@ export default {
 	watch: {
 		importvalue(newValue, oldValue) {
 			this.value = newValue
-		}
+		},
+		stringList: {
+	　　　　handler(newValue, oldValue) {
+				this.filterList(this.value);
+	　　　　},
+	　　　　deep: true
+	　　}
 	},
     model: {
         prop: 'value',

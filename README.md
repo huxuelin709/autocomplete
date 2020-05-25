@@ -8,7 +8,7 @@
 在标签里引入
 
 ```html
-<str-autocomplete :stringList="stringList" :importvalue="title" @select="selectOne" highlightColor="#FF0000" v-model="title"></str-autocomplete>
+<str-autocomplete :stringList="stringList" :importvalue="title" @select="selectOne"  @change="textChange" highlightColor="#FF0000" v-model="title"></str-autocomplete>
 ```
 
 ---
@@ -40,6 +40,9 @@ export default {
       this.title = opt
       console.log(opt)
     },
+    textChange(opt) {
+      console.log("textchange:" + opt)
+    },
     changeTitle(text) {
       this.title = text
     }
@@ -48,6 +51,8 @@ export default {
 ```
 
 # 更新内容
+# 2020.5.25
+修改了stringList变化时下拉列表未变化的问题，修改了初始化输入没有值出现下拉列表的问题
 # 2020.4.16
 修改了匹配文字时引发的undefined问题
 在例子中添加了输入文字触发的事件 @change="textChange"
